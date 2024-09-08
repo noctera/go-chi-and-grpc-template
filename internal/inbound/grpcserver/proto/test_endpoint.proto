@@ -1,0 +1,22 @@
+syntax = "proto3";
+option go_package = "my-app/internal/inbound/grpcserver/proto/pb/testendpoint";
+
+package test_endpoint;
+
+message Test {
+  string id = 1;
+  string name = 2;
+}
+
+message GetIdsByNameRequest {
+  string name = 1;
+}
+
+message GetIdsByNameResponse {
+  repeated string ids = 1;
+}
+
+
+service TestEndpoint {
+  rpc GetIdsByName (GetIdsByNameRequest) returns (GetIdsByNameResponse);
+}
